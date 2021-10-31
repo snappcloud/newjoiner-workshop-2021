@@ -2,7 +2,7 @@
 apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
-  name: sample-nginx-private
+  name: sample-nginx-inter-dc
   labels:
     router: inter-dc
 spec:
