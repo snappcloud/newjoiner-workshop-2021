@@ -1,0 +1,13 @@
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: sample-nginx-public
+  labels:
+    router: public
+spec:
+  host: your-hostname.apps.public.okd4.teh-1.snappcloud.io
+  port:
+    targetPort: web
+  to:
+    name: sample-nginx

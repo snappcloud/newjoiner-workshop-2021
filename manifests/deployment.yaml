@@ -16,5 +16,5 @@ spec:
       - name: sample-nginx-cont
         image: spc35771/examples-nginx:latest
         ports:
-        - name: 8080-tcp
+        - name: web
           containerPort: 8080
