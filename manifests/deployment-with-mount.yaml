@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sample-nginx-with-mount
+spec:
+  selector:
+    matchLabels:
+      app: sample-nginx
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: sample-nginx
+    spec:
+      containers:
+      - name: sample-nginx-cont
+        image: spc35771/examples-nginx:latest
+        ports:
+        - name: web
+          containerPort: 8080
+        env:
+        - name: MYSQL_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysql-credentials
+              key: MYSQL_PASSWORD
+        volumeMounts:
+          - name: my-config-vol
+            mountPath: /home/my-vol
+          - name: my-config-vol
+            mountPath: /home/another-vol
+            subPath: myconf.txt
+      volumes:
+        - name: my-config-vol
+          configMap:
+            name: my-config
