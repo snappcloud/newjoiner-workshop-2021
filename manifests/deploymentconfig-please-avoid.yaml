@@ -1,0 +1,20 @@
+apiVersion: apps.openshift.io/v1
+kind: DeploymentConfig
+metadata:
+  name: sample-nginx
+spec:
+  strategy:
+    type: Rolling
+    activeDeadlineSeconds: 21600
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: sample-nginx
+    spec:
+      containers:
+      - name: sample-nginx-cont
+        image: spc35771/examples-nginx:latest
+        ports:
+        - name: web
+          containerPort: 8080
