@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: crashloop
+spec:
+  selector:
+    matchLabels:
+      app: sample-nginx
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: sample-nginx
+    spec:
+      containers:
+      - name: sample-nginx-cont
+        image: alpine
+        command:
+          - "/bin/sh"
+          - "-c"
+          - |
+            ehco Hi
+            cat /not/existing/file
+            echo Done
+        ports:
+        - name: web
+          containerPort: 8080

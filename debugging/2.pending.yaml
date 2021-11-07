@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pending
+spec:
+  selector:
+    matchLabels:
+      app: sample-nginx
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: sample-nginx
+    spec:
+      containers:
+      - name: sample-nginx-cont
+        image: spc35771/examples-nginx:latest
+        ports:
+        - name: web
+          containerPort: 8080
+        resources:
+          limits:
+            cpu: 10
+            memory: 100Gi
