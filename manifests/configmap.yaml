@@ -1,15 +1,5 @@
 ---
 apiVersion: v1
-kind: Secret
-metadata:
-  name: mysql-credentials
-  namespace: snappcloud-test
-type: stringData
-data:
-  MYSQL_USERNAME: mohammad
-  MYSQL_PASSWORD: abc123
----
-apiVersion: v1
 kind: ConfigMap
 metadata:
   name: my-config

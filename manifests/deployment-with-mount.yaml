@@ -28,7 +28,7 @@ spec:
           - name: my-config-vol
             mountPath: /home/my-vol
           - name: my-config-vol
-            mountPath: /home/another-vol
+            mountPath: /home/myconf.txt
             subPath: myconf.txt
       volumes:
         - name: my-config-vol

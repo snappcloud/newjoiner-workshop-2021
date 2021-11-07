@@ -19,6 +19,8 @@ spec:
         - name: web
           containerPort: 8080
         env:
+        - name: HI
+          value: "Hello"
         - name: MYSQL_PASSWORD
           valueFrom:
             secretKeyRef:

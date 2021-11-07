@@ -20,5 +20,5 @@ spec:
           containerPort: 8080
         readinessProbe:
           httpGet:
-            path: /hihi
+            path: /ready
             port: web

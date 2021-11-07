@@ -19,7 +19,8 @@ spec:
           - "/bin/sh"
           - "-c"
           - |
-            ehco Hi
+            set -e
+            echo Hi
             cat /not/existing/file
             echo Done
         ports:
