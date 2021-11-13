@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: type-c
+spec:
+  selector:
+    matchLabels:
+      app: sample-nginx
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: sample-nginx
+    spec:
+      containers:
+      - name: sample-nginx-cont
+        image: spc35771/examples-nginx:latest
+        ports:
+        - name: web
+          containerPort: 8080
+        env:
+        volumeMounts:
+          - name: my-config-vol
+            mountPath: /home/my-vol
+          - name: my-config-vol
+            mountPath: /home/myconf.txt
+            subPath: myconf.txt
+      volumes:
+        - name: my-config-vol
+          configMap:
+            name: my-configuration-vol

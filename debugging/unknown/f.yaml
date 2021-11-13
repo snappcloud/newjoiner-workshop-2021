@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: type-f
+spec:
+  selector:
+    matchLabels:
+      app: elastic
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: elastic
+    spec:
+      containers:
+      - name: elastic
+        image: docker.io/openshift/origin-logging-elasticsearch5:v3.11.0
+
