@@ -23,11 +23,20 @@ spec:
           httpGet:
             path: /healthz?full=true
             port: 8080
+            httpHeaders:
+            - name: Custom-Header
+              value: Awesome
           initialDelaySeconds: 30
           periodSeconds: 5
         readinessProbe:
-          httpGet:
-            path: /healthz
-            port: 8080
+          exec:
+            command:
+            - cat
+            - /tmp/healthy
           initialDelaySeconds: 5
-          periodSeconds: 10
+          periodSeconds: 5
+        # readinessProbe:
+        #   tcpSocket:
+        #      port: 8080
+        #   initialDelaySeconds: 15
+        #   periodSeconds: 20
